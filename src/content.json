@@ -93,7 +93,8 @@
       "type": "Certification",
       "issued": "",
       "expires": "",
-      "featured": true
+      "featured": true,
+      "stripLabel": "CCNA"
     },
     {
       "short": "AWS",
@@ -102,7 +103,8 @@
       "type": "Certification",
       "issued": "Dec 2024",
       "expires": "Dec 2027",
-      "featured": true
+      "featured": true,
+      "stripLabel": "AWS Solutions Architecture"
     },
     {
       "short": "AZ-900",
@@ -111,7 +113,8 @@
       "type": "Certification",
       "issued": "Sep 2024",
       "expires": "",
-      "featured": true
+      "featured": true,
+      "stripLabel": "Azure Fundamentals"
     },
     {
       "short": "ISC2 CC",
@@ -120,7 +123,8 @@
       "type": "Certification",
       "issued": "Aug 2024",
       "expires": "Aug 2027",
-      "featured": true
+      "featured": true,
+      "stripLabel": "ISC2 Cybersecurity"
     },
     {
       "short": "GOOGLE",

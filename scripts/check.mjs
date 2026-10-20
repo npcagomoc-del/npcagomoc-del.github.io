@@ -80,3 +80,20 @@ assert(
 console.log(
   "Regression checks passed: JSON-LD injection boundary and central identity updates.",
 );
+const withoutCertifications = structuredClone(data);
+withoutCertifications.certifications = [];
+const withoutSections = render(withoutCertifications);
+const withoutPage = template.replace(
+  /\{\{(\w+)\}\}/g,
+  (_, key) => withoutSections[key],
+);
+const strip = withoutPage
+  .split('class="credential-strip"')[1]
+  .split("</div>")[0];
+for (const cert of data.certifications.filter((c) => c.featured)) {
+  assert(
+    !strip.includes(cert.stripLabel || cert.short),
+    "Removed credentials must not remain in the summary strip",
+  );
+}
+console.log("Credential-strip content mutation regression passed.");

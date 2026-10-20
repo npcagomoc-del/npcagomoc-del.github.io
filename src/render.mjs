@@ -18,7 +18,7 @@ export function render(data) {
     year: escape(data.year),
     credentialStrip: data.certifications
       .filter((c) => c.featured)
-      .map((c) => `<span>${escape(c.short)}</span>`)
+      .map((c) => `<span>${escape(c.stripLabel || c.short)}</span>`)
       .join(""),
     headline: `${escape(data.headline[0])}<br><span class="hero-accent">${escape(data.headline[1])}</span>`,
     projects: `<div class="work-grid">${data.projects.map(projectCard).join("")}</div>`,
