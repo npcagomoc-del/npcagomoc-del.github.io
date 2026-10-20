@@ -150,16 +150,52 @@ try {
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   );
-  await page.emulateMedia({ media: "print" });
-  await page.pdf({
-    path: `${evidence}/resume.pdf`,
-    format: "A4",
-    printBackground: true,
-    preferCSSPageSize: true,
-  });
-  await page.screenshot({ path: `${evidence}/print.png`, fullPage: true });
-  assert.equal(await page.locator(".hero").isVisible(), false);
-  assert(await page.locator(".resume-sheet").isVisible());
+  for (const paperTheme of ["dark", "light"]) {
+    const printContext = await browser.newContext({
+      colorScheme: paperTheme,
+      viewport: { width: 794, height: 1123 },
+    });
+    const printPage = await printContext.newPage();
+    await printPage.goto(base);
+    await printPage.evaluate(() => document.fonts.ready);
+    await printPage.emulateMedia({ media: "print" });
+    const paper = await printPage
+      .locator("html")
+      .evaluate((e) => ({
+        scheme: getComputedStyle(e).colorScheme,
+        background: getComputedStyle(e).backgroundColor,
+      }));
+    assert.equal(
+      paper.scheme,
+      "light",
+      "Printing from " + paperTheme + " must use a light paper canvas",
+    );
+    assert.equal(
+      paper.background,
+      "rgb(255, 255, 255)",
+      "Printed page margins must stay white",
+    );
+    await printPage.pdf({
+      path: evidence + "/resume-" + paperTheme + ".pdf",
+      format: "A4",
+      printBackground: true,
+      preferCSSPageSize: true,
+    });
+    await printPage.screenshot({
+      path: evidence + "/print-" + paperTheme + ".png",
+      fullPage: true,
+    });
+    assert.equal(await printPage.locator(".hero").isVisible(), false);
+    assert(await printPage.locator(".resume-sheet").isVisible());
+    if (paperTheme === "dark")
+      await printPage.pdf({
+        path: evidence + "/resume.pdf",
+        format: "A4",
+        printBackground: true,
+        preferCSSPageSize: true,
+      });
+    await printContext.close();
+  }
   const nojs = await browser.newContext({
     javaScriptEnabled: false,
     viewport: { width: 375, height: 900 },

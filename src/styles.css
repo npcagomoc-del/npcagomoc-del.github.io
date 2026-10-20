@@ -1316,8 +1316,9 @@ details[open] .plus::after {
   margin: 14mm;
 }
 @media print {
-  html {
+  :root[data-theme] {
     color-scheme: light;
+    background: #fff;
   }
   body {
     background: #fff;
