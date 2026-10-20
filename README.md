@@ -1,6 +1,6 @@
-# Noe Cagomoc — portfolio
+# Noe P. Cagomoc — portfolio
 
-A personal portfolio for systems administration, network support, and technology operations. Includes dark/light themes, real project scope, certifications, career history, a circular portrait, and a printable résumé.
+A personal portfolio for systems administration, network support, and technology operations. Includes dark/light themes, real project scope, certifications, an interactive career roadmap, a dimensional technology scene around the portrait, and a printable résumé.
 
 **Website:** https://npcagomoc-del.github.io/
 
@@ -55,10 +55,10 @@ Push to `main`. The GitHub Actions workflow builds, checks, runs browser tests, 
 
 All browser asset references are relative, so the output also works under a repository subpath. If moving the site, update `siteUrl` in `src/content.json` for canonical links, sitemap, and social metadata. GitHub Pages serves static files; there is no backend or contact-form service.
 
-The résumé section prints through the browser's Print / Save as PDF dialog. It uses the same content as the website, so there is no second résumé file to keep in sync.
+The résumé section prints as two A4 pages through the browser's Print / Save as PDF dialog. It uses the same content as the website, so there is no second résumé file to keep in sync.
 
 ## Privacy and credits
 
-No analytics, tracking cookies, third-party runtime scripts, or embedded social widgets. Only theme preference is stored in the visitor's browser. Contact links open the visitor's email app or LinkedIn.
+No analytics, tracking cookies, third-party runtime scripts, or embedded social widgets. Theme and animation preferences are stored in the visitor's browser. Contact links open the visitor's email app, LinkedIn or GitHub.
 
-Design inspiration: [Amin Nepali](https://aminnepali.com.np/#work) and [Tim Gesemann](https://www.tim-gesemann.dev/). Original layout and illustrations; no reference-site code or artwork copied. Manrope is self-hosted under the SIL Open Font License; license included in `public/assets/Manrope-OFL.txt`. Personal photo and résumé content belong to Noe Cagomoc. Libre Trading Journal is credited as an adaptation of Trading-Journal-AI (MIT).
+Design inspiration: [Amin Nepali](https://aminnepali.com.np/#work) and [Tim Gesemann](https://www.tim-gesemann.dev/). Original layout and illustrations; no reference-site code or artwork copied. Manrope is self-hosted under the SIL Open Font License; license included in `public/assets/Manrope-OFL.txt`. Personal photo and résumé content belong to Noe P. Cagomoc. Libre Trading Journal is credited as an adaptation of Trading-Journal-AI (MIT).

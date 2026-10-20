@@ -7,6 +7,14 @@
     <meta name="color-scheme" content="dark light" />
     <script>
       document.documentElement.classList.add("js");
+      document.documentElement.dataset.motion = "full";
+      try {
+        const motion = localStorage.getItem("portfolio-motion");
+        if (motion === "full" || motion === "reduced")
+          document.documentElement.dataset.motion = motion;
+      } catch {
+        /* Keep the default when storage is unavailable. */
+      }
       try {
         document.documentElement.dataset.theme =
           localStorage.getItem("portfolio-theme") ||
@@ -41,7 +49,7 @@
           ><span class="wordmark-name">{{name}}</span></a
         >
         <nav class="navigation" id="navigation" aria-label="Main navigation">
-          <a href="#work">Work</a><a href="#skills">Expertise</a
+          <a href="#work">Projects</a><a href="#skills">Expertise</a
           ><a href="#experience">Experience</a
           ><a href="#certifications">Credentials</a><a href="#resume">Résumé</a>
         </nav>
@@ -69,16 +77,13 @@
     <main id="main">
       <section class="hero container" id="top" aria-labelledby="hero-heading">
         <div class="hero-copy">
-          <p class="eyebrow">
-            <span class="label-line"></span> SYSTEMS · NETWORKS · TECHNOLOGY
-            OPERATIONS
-          </p>
-          <p class="hero-name">Hi, I’m {{name}}.</p>
+          <p class="hero-name">Hi, I'm {{greetingName}},</p>
           <h1 id="hero-heading">{{headline}}</h1>
           <p class="hero-description">{{intro}}</p>
+          <p class="hero-learning">{{learningNote}}</p>
           <div class="actions">
             <a class="button primary" href="#work"
-              >Explore my work {{arrowDown}}</a
+              >View projects {{arrowDown}}</a
             ><a class="button secondary" href="#resume"
               >View résumé {{arrow}}</a
             >
@@ -89,8 +94,14 @@
               >{{availability}}</span
             ><span>{{location}}</span>
           </div>
+          <div class="motion-preference js-only">
+            <button class="motion-toggle text-link" type="button" aria-pressed="false">Enable animations</button>
+          </div>
         </div>
         <div class="hero-portrait">
+          <div class="tech-scene">
+            <div class="tech-space">
+              {{portraitTech}}
           <div class="portrait-frame">
             <img
               src="assets/noe-cagomoc-720.webp"
@@ -98,27 +109,20 @@
                 assets/noe-cagomoc-480.webp 480w,
                 assets/noe-cagomoc-720.webp 720w
               "
-              sizes="(max-width: 767px) 168px, (max-width: 899px) 224px, (max-width: 1100px) 260px, 320px"
+              sizes="(max-width: 767px) 220px, (max-width: 899px) 200px, 290px"
               alt="{{name}} at his workstation, wearing headphones"
               width="480"
               height="480"
               fetchpriority="high"
             />
           </div>
-          <div class="portrait-caption">
-            <span class="caption-rule"></span
-            ><span
-              >Behind the systems.<br /><strong
-                >A person who cares.</strong
-              ></span
-            >
+            </div>
           </div>
-          <p class="portrait-index">{{initials}} / PORTFOLIO {{year}}</p>
         </div>
       </section>
       <div class="credential-strip">
         <div class="container strip-inner">
-          <span class="eyebrow">A FOUNDATION IN</span>{{credentialStrip}}
+          <span class="eyebrow">CERTIFIED IN</span>{{credentialStrip}}
         </div>
       </div>
       <section
@@ -127,14 +131,10 @@
         aria-labelledby="work-heading"
       >
         <div class="section-heading">
-          <p class="eyebrow">01 / SELECTED WORK</p>
+          <p class="eyebrow">01 / PROJECTS</p>
           <div>
-            <h2 id="work-heading">
-              Practical work.<br /><span class="muted"
-                >From infrastructure to ideas.</span
-              >
-            </h2>
-            <p>What I support at work, and what I build beyond it.</p>
+            <h2 id="work-heading">Projects</h2>
+            <p>Networks, monitoring, reports, and applications I’ve built or deployed.</p>
           </div>
           <a
             class="text-link heading-link"
@@ -154,23 +154,14 @@
         <div class="section-heading">
           <p class="eyebrow">02 / EXPERTISE</p>
           <div>
-            <h2 id="skills-heading">The tools. The know-how.</h2>
+            <h2 id="skills-heading">Technical expertise</h2>
             <p>
-              A practical mix of infrastructure support and building with code.
+              Administration, deployment, security, and technical support.
             </p>
           </div>
         </div>
+        <div class="brand-strip" aria-label="Technologies I work with">{{brands}}</div>
         <div class="skill-grid">{{skills}}</div>
-        <div class="working-note">
-          <span class="eyebrow">HOW I WORK</span>
-          <p>
-            Understand the problem. Document the approach. Test the result.<br /><span
-              class="muted"
-              >Whether I’m troubleshooting a network or building with a coding
-              agent.</span
-            >
-          </p>
-        </div>
       </section>
       <section
         class="section container"
@@ -180,10 +171,11 @@
         <div class="section-heading">
           <p class="eyebrow">03 / EXPERIENCE</p>
           <div>
-            <h2 id="experience-heading">Grounded in operations.</h2>
-            <p>Supporting people and the technology they depend on.</p>
+            <h2 id="experience-heading">Experience & education</h2>
+            <p>IT administration, agentic programming, and Computer Engineering.</p>
           </div>
         </div>
+        {{roadmapNavigation}}
         <div class="experience-list">{{experience}}</div>
       </section>
       <section
@@ -194,7 +186,7 @@
         <div class="section-heading">
           <p class="eyebrow">04 / CREDENTIALS</p>
           <div>
-            <h2 id="certifications-heading">Always building on the basics.</h2>
+            <h2 id="certifications-heading">Certifications & learning</h2>
             <p>Certifications in networking, cloud, and cybersecurity.</p>
           </div>
           <a
@@ -206,6 +198,7 @@
           >
         </div>
         <div class="cert-grid">{{certifications}}</div>
+        {{community}}
         <details class="training-details">
           <summary>
             Further training & professional learning
@@ -222,8 +215,8 @@
         <div class="section-heading">
           <p class="eyebrow">05 / RÉSUMÉ</p>
           <div>
-            <h2 id="resume-heading">The full picture.</h2>
-            <p>My background, in one place. Ready to read or save.</p>
+            <h2 id="resume-heading">Résumé</h2>
+            <p>Experience, technical work, and qualifications. Read here or save as PDF.</p>
           </div>
           <button class="button secondary print-button js-only" type="button">
             {{printIcon}} Print / save PDF
@@ -240,7 +233,7 @@
           <div>
             <p class="eyebrow">LET’S CONNECT</p>
             <h2 id="contact-heading">
-              Good work starts<br />with a conversation.
+              Contact me
             </h2>
             <p>
               Open to systems administration, network support,<br />and
@@ -255,15 +248,14 @@
               href="{{linkedin}}"
               target="_blank"
               rel="noopener noreferrer"
-              >Connect on LinkedIn {{arrow}}</a
-            ><a class="contact-email" href="mailto:{{email}}">{{email}}</a>
+              ><img class="social-mark" src="assets/brands/linkedin.svg" width="20" height="20" alt="">Connect on LinkedIn {{arrow}}</a
+            ><a class="text-link" href="{{github}}" target="_blank" rel="noopener noreferrer"><img class="social-mark" src="assets/brands/github.svg" width="20" height="20" alt="">View GitHub {{arrow}}</a><a class="contact-email" href="mailto:{{email}}">{{email}}</a>
           </div>
         </div>
       </section>
     </main>
     <footer class="container site-footer">
       <p>© {{year}} {{name}}</p>
-      <p>Built with care. Kept simple.</p>
       <div>
         <a href="{{github}}" target="_blank" rel="noopener noreferrer"
           >GitHub {{arrow}}</a

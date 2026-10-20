@@ -32,7 +32,7 @@ Replace `public/assets/noe-cagomoc-480.webp` and `noe-cagomoc-720.webp` with the
 
 Project screenshots live under `public/assets/` and use WebP. Review new screenshots for private information. Update alt text, width and height in `src/graphics.mjs` when replacing them.
 
-`social-card.png` is the share preview. Update it if the name/headline changes. `favicon.svg` is the NC monogram. Manrope is self-hosted; preserve its OFL license. No external font requests are required.
+`social-card.png` is the share preview. Update it if the name/headline changes. `favicon.svg` is the NPC monogram. Manrope is self-hosted; preserve its OFL license. No external font requests are required.
 
 ## Themes and layout
 
@@ -58,4 +58,44 @@ Repository: `npcagomoc-del/npcagomoc-del.github.io`. Publishing source: GitHub A
 
 `siteUrl` is used for the canonical URL, sitemap and social metadata. All assets use relative paths. A repository-subpath deployment therefore renders correctly, but update `siteUrl` if the public address changes.
 
-Email and LinkedIn are ordinary links, not a submission form. There is no message database, analytics service, authentication, API key, or visitor data collection. The only saved browser state is the chosen theme.
+Contact actions are ordinary links, not a submission form. There is no message database, analytics service, authentication, API key, or visitor data collection. Saved browser state contains the chosen theme and optional animation preference.
+
+## Office projects, tools and community
+
+`brands` contains display names and asset keys; `community` contains event titles and attendance descriptions. Keep both in content.json. Featured certifications may include an `icon` key for their issuer mark. These marks do not confer certifications beyond the named credential.
+
+Projects with `resume: true` appear in the professional résumé project section. Use `resumeDescription` for its compact summary; full project scope remains on the main page. The résumé prints as two deliberate A4 pages: experience and credentials, then selected projects and technical skills. Check both actual PDF pages from dark and light modes after copy changes. Do not force it onto one page by reducing type.
+
+Office illustrations use shared SVG primitives in graphics.mjs and are marked as process illustrations. Do not replace them with unsanitized internal screenshots. Brand assets live in assets/brands; record sources in CONTENT-SOURCES.md and preserve the license. After replacing images, browser QA must scroll through and decode the lazy project previews before composite captures.
+
+The career path follows reading position and the active navigation link. Reduced motion displays the complete path; no-JavaScript navigation, roles and dates remain available. Check these fallbacks after interaction changes.
+
+The technology strip moves only while visible and offers Pause / Resume motion. Hovering or focusing the strip pauses it; reduced motion and no JavaScript show wrapped static marks. Pause the strip before static screenshot checks, and verify movement separately with normal motion enabled. Skip the inert, aria-hidden duplicate track when testing lazy image scrolling.
+
+The hero's Enable animations / Reduce animations button saves `portfolio-motion` as `full` or `reduced`. At the owner's latest request, no saved choice means full motion, including in a browser reporting reduced motion. An explicitly saved reduced choice still disables motion. Keep CSS and JavaScript keyed to the effective `data-motion` value. Test default-on behavior under both system settings, explicit on/off and reload persistence. Without JavaScript, the composition remains static.
+
+The portrait now sits inside `.tech-scene` / `.tech-space`, a CSS perspective composition with decorative circuit rings and server/network/system/automation symbols. The actual photo retains its square intrinsic frame and circular crop. Verify its layout dimensions before perspective projection rather than expecting the projected bounding rectangle to remain square. Full motion includes orbit rotation, pointer tilt on fine pointers and native scroll depth; it pauses outside the viewport and when the document is hidden. Reduced motion and no JavaScript keep a static composition. Avoid replacing it with a screenshot or adding unsourced system metrics.
+
+The career roadmap uses measured `.timeline-dot` checkpoints and cubic SVG connections, alternating across a central corridor on desktop and winding within a narrow left rail below900px. Milestone navigation renders from the same chronological content and links to generated article IDs; click/Enter scrolls and focuses the selected milestone. ArrowLeft/ArrowRight/Home/End operate the milestone links. Preserve readable source content and native anchor fallback without JavaScript. The Clauto company link has a44px hit target on the main roadmap; keep this separate from résumé printing.
+
+Brand assets retain their source colors, but company/tool/issuer marks display in monochrome without white wells or added padding. Shared `--brand-treatment` / `--brand-blend` use grayscale and multiply on light surfaces, inversion and screen on dark surfaces to keep raster white backgrounds from appearing as tiles. Keep this scoped to marks so portrait/event/project images retain their colors. Source references and the additional Devicon license are in CONTENT-SOURCES.md and assets/brands.
+
+Community entries may supply `image` and `imageAlt` for owner-approved event artwork. Logos use the central brand/credential `icon` keys, including optional issuer marks on further training. Keep adjacent text labels; the decorative marks do not replace accessible names.
+
+Projects may set `wide: true` to reuse the full-width infrastructure card layout. Keep historical project dates in the category and compact résumé description when needed. Study Room Filinvest uses this layout and preserves its Jul–Aug2023period and contributor credit. The résumé reads its compact description from the same project entry.
+
+## Identity, copy and timeline
+
+`name` drives the full display name in the stacked wordmark, introduction, metadata, footer and résumé. `initials` drives the lowercase npc. mark; the favicon is its separate SVG asset. `learningNote` supplies the second paragraph below the introduction. The portrait caption and portfolio index have been removed.
+
+`greetingName` supplies the short name in the hero greeting (“Hi, I'm Noe,”); the full `name` remains on the wordmark and résumé.
+
+The page timeline combines employment entries with the central `education` object and sorts by the first year, from past to present. Keep employment data newest first for the résumé. Résumé employment and education remain separate sections. Do not add a duplicate education entry to `experience`, or it will also appear as a job in the résumé.
+
+Education may include `description`, a short general degree description for the roadmap, and `thesis`, the owner-confirmed thesis title shared with the résumé. Do not turn the general description into an invented course transcript or add unspecified thesis outcomes.
+
+Project notes are optional. Keep contributor and upstream attribution; omit empty notes rather than rendering empty paragraphs. Public process-graphic badges and generic disclosure disclaimers were removed at the owner's explicit request. The underlying visuals remain abstract process diagrams and must not acquire invented telemetry. Source/privacy boundaries remain in CONTENT-SOURCES.md.
+
+Long composite capture note: mobile page height exceeds16384px. Chrome's GPU full-page capture repeated the page top beyond that raster boundary, while actual viewport and section captures were correct. Browser regression capture now launches real Chrome with `--disable-gpu` for reliable tall image export. A separate normal-GPU Chrome motion recording and Lighthouse audit remain the runtime/performance evidence. Repaired375px full composites show the complete résumé tail, contact and footer.
+
+Experience entries may supply an optional `website` URL for a linked company name on the page and résumé. Use the official HTTPS site. Year-only dates are acceptable when exact months/status were not provided; do not manufacture Present or completion labels. The2026Clauto internship uses this pattern.

@@ -1,15 +1,16 @@
 import assert from "node:assert/strict";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, writeFile, readFile } from "node:fs/promises";
 import { chromium } from "playwright";
 import AxeBuilder from "@axe-core/playwright";
 const base = process.env.TEST_URL || "http://127.0.0.1:4173";
 const evidence = "work/qa";
 await mkdir(evidence, { recursive: true });
-const browser = await chromium.launch({ channel: "chrome", headless: true });
+const browser = await chromium.launch({ channel: "chrome", headless: true, args: ["--disable-gpu"] });
 const results = [];
+const content = JSON.parse(await readFile("src/content.json", "utf8"));
 // Composite captures keep navigation in document flow; live interactions still test the sticky header.
 const captureStyle =
-  ".site-header{position:static!important}.skip-link{visibility:hidden!important}";
+  ".site-header,.roadmap-nav{position:static!important}.skip-link{visibility:hidden!important}.experience-row{--entry-shift:0px!important;--entry-slide:0px!important}";
 try {
   for (const width of [375, 768, 1280])
     for (const theme of ["dark", "light"]) {
@@ -41,12 +42,33 @@ try {
         ),
         `Overflow at ${width}/${theme}`,
       );
-      const photo = await page.locator(".portrait-frame").boundingBox();
+      const mark = await page.locator(".monogram").boundingBox();
+      const fullName = await page.locator(".wordmark-name").boundingBox();
+      assert(fullName && fullName.y >= mark.y + mark.height - 1, "Full name must sit below the monogram");
+      assert.equal(await page.locator(".wordmark-name").innerText(), content.name);
+      assert(await page.locator("#experience").getByRole("heading", { name: content.education.degree, exact: true }).isVisible());
+      const photo = await page.locator(".portrait-frame").evaluate((frame) => ({
+        width: frame.offsetWidth,
+        height: frame.offsetHeight,
+        radius: getComputedStyle(frame).borderRadius,
+      }));
       assert(
         Math.abs(photo.width - photo.height) < 1,
         "Portrait is not circular",
       );
+      assert.equal(photo.radius, "50%", "Portrait must retain its circular crop before 3D projection");
+      await page.getByRole("button", { name: "Pause motion", exact: true }).click();
+      for (const preview of await page.locator('img').all()) {
+        if (await preview.evaluate((img) => Boolean(img.closest('[aria-hidden="true"]')))) continue;
+        await preview.scrollIntoViewIfNeeded();
+        await preview.evaluate((img) => {
+          img.loading = "eager";
+          return img.decode();
+        });
+      }
+      await page.evaluate(() => window.scrollTo(0, 0));
       await page.screenshot({
+        animations: "disabled",
         path: `${evidence}/${width}-${theme}-viewport.png`,
       });
       for (const selector of [
@@ -59,11 +81,13 @@ try {
         "#contact",
       ]) {
         await page.locator(selector).screenshot({
+        animations: "disabled",
           style: captureStyle,
           path: `${evidence}/${width}-${theme}-${selector.replace(/[.#]/g, "")}.png`,
         });
       }
       await page.screenshot({
+        animations: "disabled",
         style: captureStyle,
         path: `${evidence}/${width}-${theme}-full.png`,
         fullPage: true,
@@ -123,6 +147,7 @@ try {
         await details.locator("summary").click();
         assert((await details.getAttribute("open")) !== null);
         await details.screenshot({
+        animations: "disabled",
           style: captureStyle,
           path: `${evidence}/${width}-${theme}-details-${(await details.locator("summary").innerText()).startsWith("Further") ? "training" : (await details.locator("p").first().innerText()).slice(0, 15).replace(/\W/g, "")}.png`,
         });
@@ -182,6 +207,7 @@ try {
       preferCSSPageSize: true,
     });
     await printPage.screenshot({
+        animations: "disabled",
       path: evidence + "/print-" + paperTheme + ".png",
       fullPage: true,
     });
@@ -195,6 +221,28 @@ try {
         preferCSSPageSize: true,
       });
     await printContext.close();
+  }
+  for (const reducedMotion of ["reduce", "no-preference"]) {
+    const motionContext = await browser.newContext({
+      reducedMotion,
+      viewport: { width: 375, height: 900 },
+    });
+    const motionPage = await motionContext.newPage();
+    await motionPage.goto(base);
+    assert.equal(await motionPage.locator("html").getAttribute("data-motion"), "full");
+    await motionPage.getByRole("button", { name: "Reduce animations", exact: true }).click();
+    assert.equal(await motionPage.locator(".brand-motion-control").isVisible(), false);
+    await motionPage.getByRole("button", { name: "Enable animations", exact: true }).click();
+    assert.equal(await motionPage.locator("html").getAttribute("data-motion"), "full");
+    await motionPage.reload();
+    assert.equal(await motionPage.locator("html").getAttribute("data-motion"), "full");
+    assert.equal(await motionPage.locator(".brand-motion-control").isVisible(), true);
+    await motionPage.getByRole("button", { name: "Reduce animations", exact: true }).click();
+    await motionPage.reload();
+    assert.equal(await motionPage.locator("html").getAttribute("data-motion"), "reduced");
+    assert.equal(await motionPage.evaluate(() => document.getAnimations().filter((a) => a.playState === "running").length), 0);
+    results.push({ systemMotion: reducedMotion, motionOverride: "pass", motionPersistence: "pass" });
+    await motionContext.close();
   }
   const nojs = await browser.newContext({
     javaScriptEnabled: false,

@@ -1,6 +1,7 @@
 {
-  "name": "Noe Cagomoc",
-  "initials": "NC",
+  "name": "Noe P. Cagomoc",
+  "greetingName": "Noe",
+  "initials": "NPC",
   "role": "ICT Administration Supervisor / Database & Server Admin",
   "location": "Las Piñas, Philippines",
   "availability": "Open to opportunities",
@@ -8,26 +9,31 @@
   "email": "npcagomoc@outlook.com",
   "linkedin": "https://www.linkedin.com/in/npcagomoc/",
   "github": "https://github.com/npcagomoc-del",
-  "headline": ["Reliable systems.", "Practical solutions."],
-  "intro": "ICT Administration Supervisor and Database & Server Administrator, with hands-on experience in networks, storage, security, and IT support. I also use AI coding tools to build practical applications.",
-  "summary": "ICT Administration Supervisor and Database & Server Administrator with experience in IT operations since 2021. Background in Level 1 and Level 2 technical support, server administration, network infrastructure, Synology storage, Microsoft 365, endpoint security, CCTV, and technical documentation. AWS, Azure, ISC2 CC, and CCNA credentials, with practical AI-assisted development using Codex, Claude, and OpenCode.",
+  "headline": [
+    "Networks & systems.",
+    "IT support & automation."
+  ],
+  "intro": "I’ve worked in IT for six years, from user support to managing servers and networks. I also build tools that cut down repetitive work.",
+  "summary": "IT professional with six years of experience in network and systems administration, IT support, security, and business applications. Supervises support teams, administers Windows and Linux servers, Microsoft 365, storage and backups, and coordinates network and CCTV deployments. Builds monitoring and report automation with Zabbix, Grafana, APIs, and Python. Holds CCNA, AWS Solutions Architect – Associate, Azure Fundamentals, and ISC2 CC certifications.",
   "skills": [
     {
       "id": "01",
-      "title": "Systems & infrastructure",
-      "description": "Server administration, shared storage, backups, and container-based services.",
+      "title": "Systems & applications",
+      "description": "Windows and Linux administration, Microsoft 365, databases, shared storage, and backups.",
       "tools": [
         "Windows Server",
+        "Linux",
+        "Microsoft 365",
+        "Database administration",
         "Synology NAS",
         "Docker",
-        "Server monitoring",
         "Backup operations"
       ]
     },
     {
       "id": "02",
-      "title": "Networks & connectivity",
-      "description": "Network setup, troubleshooting, and infrastructure deployment across offices and remote sites.",
+      "title": "Networks & security",
+      "description": "Network deployment, configuration, security, and troubleshooting across offices and remote sites.",
       "tools": [
         "UniFi",
         "Cisco networking",
@@ -38,39 +44,67 @@
     },
     {
       "id": "03",
-      "title": "Security & workplace IT",
-      "description": "Endpoint protection, employee support, and physical security systems.",
+      "title": "Support, CCTV & access systems",
+      "description": "Technical support, endpoint protection, CCTV, biometrics, and access-control systems.",
       "tools": [
+        "Technical support",
         "Cisco Secure Endpoint",
         "Hikvision CCTV",
-        "Microsoft 365",
-        "IT asset management",
-        "Biometrics"
+        "ZKTeco",
+        "Anviz",
+        "IT asset management"
       ]
     },
     {
       "id": "04",
-      "title": "Agentic development",
-      "description": "Turning requirements into working tools with AI coding agents, then reviewing, testing, and iterating on the result.",
+      "title": "Automation & development",
+      "description": "Python scripts, API-based reports, server monitoring, and tools for legacy applications.",
       "tools": [
+        "Zabbix & Grafana",
+        "Python",
+        "API reporting",
         "OpenAI Codex",
         "Claude",
         "OpenCode",
-        "Git & GitHub",
-        "AI-assisted prototyping"
+        "Oh My OpenCode",
+        "Git & GitHub"
+      ]
+    },
+    {
+      "id": "05",
+      "title": "Project management",
+      "description": "Requirements, deployment plans, vendor coordination, site work, and technical documentation.",
+      "tools": [
+        "Requirements gathering",
+        "Vendor coordination",
+        "Deployment planning",
+        "Technical documentation"
       ]
     }
   ],
   "experience": [
+    {
+      "title": "AI Engineer Intern",
+      "company": "Clauto",
+      "website": "https://clauto.io/",
+      "period": "2026",
+      "location": "",
+      "bullets": [
+        "Learned agentic programming with Codex, Claude Code, OpenCode and harness tools such as Oh My OpenCode, including how different models work and when to use them."
+      ]
+    },
     {
       "title": "ICT Administration Supervisor / Database & Server Admin",
       "company": "Leonio Group",
       "period": "Feb 2025 — Present",
       "location": "National Capital Region, Philippines",
       "bullets": [
-        "Support database and server administration, infrastructure monitoring, and operational documentation.",
-        "Plan and coordinate network, CCTV, connectivity, and biometric deployments with ICT teams and vendors.",
-        "Support technical staff and help translate operational needs into practical infrastructure plans."
+        "Supervise IT support and coordinate network, security, systems, and application administration with the ICT team.",
+        "Administer Windows and Linux servers, databases, Microsoft 365, Synology storage, and backups; investigate system issues and document changes.",
+        "Deploy network infrastructure and CCTV systems across Shared Services, Mining, Tankering, and Land sites.",
+        "Plan ICT deployments, coordinate vendors and site teams, and document configuration and support procedures.",
+        "Build server monitoring and report automation with Zabbix and Grafana, and automate network reports through the UniFi API.",
+        "Maintain a permission inventory database and develop support tools, including the Translift CMS uploader and Python application installation automation."
       ]
     },
     {
@@ -79,9 +113,10 @@
       "period": "Mar 2021 — Feb 2025",
       "location": "Muntinlupa City, Philippines",
       "bullets": [
-        "Provided Level 1 and Level 2 technical support to employees and remote sites.",
-        "Managed IT asset records, equipment deployment, software licenses, and backup monitoring.",
-        "Helped deliver network, server, CCTV, and biometric projects, and trained IT support associates."
+        "Provided Level 1 and Level 2 support for employee computers, applications, Microsoft 365, and connectivity, including remote-site troubleshooting.",
+        "Prepared and deployed equipment, installed applications, maintained IT asset and software-license records, and checked backups.",
+        "Worked with the ICT team on network, server, CCTV, and biometric deployments, including site coordination and technical documentation.",
+        "Helped IT support associates troubleshoot issues and follow equipment setup and support procedures."
       ]
     }
   ],
@@ -94,7 +129,8 @@
       "issued": "",
       "expires": "",
       "featured": true,
-      "stripLabel": "CCNA"
+      "stripLabel": "CCNA",
+      "icon": "cisco"
     },
     {
       "short": "AWS",
@@ -104,7 +140,8 @@
       "issued": "Dec 2024",
       "expires": "Dec 2027",
       "featured": true,
-      "stripLabel": "AWS Solutions Architecture"
+      "stripLabel": "AWS Solutions Architect",
+      "icon": "amazonwebservices"
     },
     {
       "short": "AZ-900",
@@ -114,7 +151,8 @@
       "issued": "Sep 2024",
       "expires": "",
       "featured": true,
-      "stripLabel": "Azure Fundamentals"
+      "stripLabel": "Azure Fundamentals",
+      "icon": "microsoft"
     },
     {
       "short": "ISC2 CC",
@@ -124,7 +162,8 @@
       "issued": "Aug 2024",
       "expires": "Aug 2027",
       "featured": true,
-      "stripLabel": "ISC2 Cybersecurity"
+      "stripLabel": "ISC2 Cybersecurity",
+      "icon": "isc2"
     },
     {
       "short": "GOOGLE",
@@ -133,7 +172,8 @@
       "type": "Professional learning",
       "issued": "Mar 2024",
       "expires": "",
-      "featured": false
+      "featured": false,
+      "icon": "google"
     },
     {
       "short": "CISCO",
@@ -142,7 +182,8 @@
       "type": "Course completion",
       "issued": "Oct 2024",
       "expires": "",
-      "featured": false
+      "featured": false,
+      "icon": "cisco"
     },
     {
       "short": "SERVER",
@@ -151,7 +192,8 @@
       "type": "Course completion",
       "issued": "Sep 2024",
       "expires": "",
-      "featured": false
+      "featured": false,
+      "icon": "udemy"
     },
     {
       "short": "LSS",
@@ -160,38 +202,154 @@
       "type": "Professional learning",
       "issued": "Jul 2022",
       "expires": "",
-      "featured": false
+      "featured": false,
+      "icon": "sixsigma"
     }
   ],
   "education": {
     "degree": "Bachelor of Science in Computer Engineering",
     "school": "STI College",
-    "period": "Jun 2015 — Jun 2020"
+    "period": "Jun 2015 — Jun 2020",
+    "description": "Computer Engineering brings together programming, electronics, digital systems, embedded systems and networking.",
+    "thesis": "Voice Controlled Wheelchair"
   },
   "projects": [
     {
-      "id": "infrastructure",
-      "category": "Infrastructure / Professional work",
-      "title": "Connecting the workplace.",
-      "description": "Network, connectivity, CCTV, and biometric deployments across head office, remote offices, industrial sites, and vessels.",
-      "scope": "Co-led head office and mine-site network upgrades; planned and deployed infrastructure at remote offices and vessels with the ICT team. Coordinated CCTV deployments, fiber connectivity, and a solar-powered biometric deployment with technical and civil works teams.",
+      "id": "operations",
+      "category": "Office project / Technology operations",
+      "title": "Server monitoring and report automation",
+      "description": "Monitor server health with Zabbix and Grafana and generate reports for the ICT team.",
+      "scope": "Build and maintain server monitoring, dashboard views, and automated reports. Use the collected data to review system health and investigate issues.",
       "tools": [
-        "Network infrastructure",
-        "CCTV",
-        "Fiber connectivity",
-        "Vendor coordination"
+        "Zabbix",
+        "Grafana",
+        "Monitoring",
+        "Automated reports"
       ],
       "link": "",
       "linkLabel": "",
-      "note": "Scope summary. Diagram is illustrative; no internal network details are shown."
+      "note": "",
+      "resume": true,
+      "resumeDescription": "Server monitoring with Zabbix and Grafana, with automated reports for the ICT team."
+    },
+    {
+      "id": "unifi-reporting",
+      "category": "Office project / Technology operations",
+      "title": "Network Report Automation (UniFi)",
+      "description": "Collect UniFi network data through its API and generate recurring network reports.",
+      "scope": "Develop and maintain the API-based reporting workflow already used for network reviews.",
+      "tools": [
+        "UniFi API",
+        "Report automation",
+        "Network operations"
+      ],
+      "link": "",
+      "linkLabel": "",
+      "note": "",
+      "resume": true,
+      "resumeDescription": "API-based UniFi reports in use for recurring network reviews."
+    },
+    {
+      "id": "permissions",
+      "category": "Office project / Technology operations",
+      "title": "Permission inventory database",
+      "description": "A structured record of system permissions to support access reviews and follow-up.",
+      "scope": "Develop a permission inventory database to document access across systems and give the ICT team a reference when reviewing permissions.",
+      "tools": [
+        "Access inventory",
+        "Database",
+        "Access reviews"
+      ],
+      "link": "",
+      "linkLabel": "",
+      "note": "",
+      "resume": true,
+      "resumeDescription": "A database for documenting system access and supporting permission reviews."
+    },
+    {
+      "id": "cms-uploader",
+      "category": "Office project / Technology operations",
+      "title": "Translift CMS file uploader",
+      "description": "A companion document and photo uploader that supports the existing legacy CMS workflow.",
+      "scope": "Built a companion uploader for the legacy Translift CMS. The workflow checks existing files and filename conflicts before upload, helping staff attach documents without changing the original application.",
+      "tools": [
+        "Legacy application support",
+        "File checks",
+        "Document uploads"
+      ],
+      "link": "",
+      "linkLabel": "",
+      "note": "",
+      "resume": true,
+      "resumeDescription": "A companion document and photo uploader with pre-upload file checks for a legacy CMS."
+    },
+    {
+      "id": "support-automation",
+      "category": "Office project / Technology operations",
+      "title": "Python support automation",
+      "description": "Application installation automation for recurring technical support and workstation setup tasks.",
+      "scope": "Use Python to automate application installation steps that the support team repeats during computer setup and maintenance.",
+      "tools": [
+        "Python",
+        "Application installation",
+        "Technical support"
+      ],
+      "link": "",
+      "linkLabel": "",
+      "note": "",
+      "resume": true,
+      "resumeDescription": "Python automation for application installation and workstation setup."
+    },
+    {
+      "id": "infrastructure",
+      "category": "Infrastructure / Professional work",
+      "title": "Deployed network infrastructure and CCTV systems across all sites",
+      "description": "UniFi networks and CCTV systems across Shared Services, Mining, Tankering, and Land sites.",
+      "scope": "Deployed network infrastructure and CCTV systems across the group’s sites with the ICT team. Planned site work, configured equipment, coordinated vendors and technical teams, and documented deployments. Also supported fiber connectivity and biometric installations.",
+      "tools": [
+        "UniFi",
+        "Hikvision CCTV",
+        "Project coordination",
+        "Site deployment"
+      ],
+      "link": "",
+      "linkLabel": "",
+      "note": "",
+      "resume": true,
+      "resumeDescription": "Deployed network infrastructure and CCTV systems across Shared Services, Mining, Tankering, and Land sites.",
+      "wide": true
+    },
+    {
+      "id": "study-room",
+      "category": "Network infrastructure / Jul 2023 – Aug 2023",
+      "title": "Study Room Filinvest network & Wi-Fi portal",
+      "description": "Planned, configured, and deployed a Ubiquiti network supporting more than 50 users, with a custom Wi-Fi vending portal connected to the Study Room’s POS system.",
+      "scope": "Configured cloud gateways, security cameras, and access points for Study Room Filinvest. Created a Wi-Fi vending portal integrated with its POS system so customers could purchase and manage voucher-based Wi-Fi access.",
+      "tools": [
+        "Ubiquiti",
+        "Network deployment",
+        "Voucher-based Wi-Fi",
+        "POS integration",
+        "Project management"
+      ],
+      "link": "",
+      "linkLabel": "",
+      "note": "Project contributor: Jev.",
+      "wide": true,
+      "resume": true,
+      "resumeDescription": "Jul–Aug 2023: Deployed a Ubiquiti network for more than 50 users and built a POS-integrated portal for voucher-based Wi-Fi access."
     },
     {
       "id": "buseng",
       "category": "Personal project / Game",
       "title": "Buseng Chronicles",
-      "description": "A free Filipino meme-inspired game for Android and PC. A personal project that brings playful ideas into a working application.",
+      "description": "A Filipino meme-inspired game for Android and PC, developed as a personal project.",
       "scope": "Developed under NPC. The public repository contains the source and project documentation. See the repository for supported platforms and current releases.",
-      "tools": ["AI-assisted development", "Game development", "Android & PC"],
+      "tools": [
+        "AI-assisted development",
+        "Game development",
+        "Android & PC"
+      ],
       "link": "https://github.com/npcagomoc-del/buseng-chronicles",
       "linkLabel": "Explore the project",
       "note": "Personal project"
@@ -212,5 +370,60 @@
       "note": "Adapted from Trading-Journal-AI (MIT)"
     }
   ],
-  "year": 2026
+  "year": 2026,
+  "brands": [
+    {
+      "name": "Synology",
+      "icon": "synology"
+    },
+    {
+      "name": "Hikvision",
+      "icon": "hikvision"
+    },
+    {
+      "name": "ZKTeco",
+      "icon": "zkteco"
+    },
+    {
+      "name": "Cisco Secure Endpoint",
+      "icon": "cisco"
+    },
+    {
+      "name": "Microsoft 365",
+      "icon": "microsoft"
+    },
+    {
+      "name": "Ubiquiti / UniFi",
+      "icon": "ubiquiti"
+    },
+    {
+      "name": "Zabbix",
+      "icon": "zabbix"
+    },
+    {
+      "name": "Grafana",
+      "icon": "grafana"
+    },
+    {
+      "name": "Python",
+      "icon": "python"
+    },
+    {
+      "name": "OpenAI Codex",
+      "icon": "openai"
+    },
+    {
+      "name": "Claude",
+      "icon": "claude"
+    }
+  ],
+  "community": [
+    {
+      "title": "AWS Community Days 2026",
+      "detail": "Attended AWS Community Days 2026.",
+      "image": "assets/aws-community-day-2026.png",
+      "imageAlt": "AWS Community Day Manila 2026 event artwork"
+    }
+  ],
+  "learningNote": "I love learning and putting new skills to work."
 }

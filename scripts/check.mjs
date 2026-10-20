@@ -97,3 +97,22 @@ for (const cert of data.certifications.filter((c) => c.featured)) {
   );
 }
 console.log("Credential-strip content mutation regression passed.");
+
+const changedEducation = structuredClone(data);
+changedEducation.education.school = "Example Engineering College";
+changedEducation.education.degree = "Example Engineering Degree";
+const changedTimeline = render(changedEducation).experience;
+assert(changedTimeline.includes(changedEducation.education.school));
+assert(changedTimeline.includes(changedEducation.education.degree));
+assert(!changedTimeline.includes(data.education.school), "Timeline education must follow central content");
+console.log("Timeline education content mutation regression passed.");
+
+const timelineYears = [...render(data).experience.matchAll(/class="experience-year"[^>]*>(\d{4})</g)].map((match) => Number(match[1]));
+assert.deepEqual(timelineYears, [...timelineYears].sort((a, b) => a - b), "Main timeline must run from past to present");
+
+for (const [, asset] of html.matchAll(/<img[^>]+src="(assets\/[^"]+)"/g))
+  await access("dist/" + asset);
+
+for (const entry of data.experience) {
+  if (entry.website) assert.equal(new URL(entry.website).protocol, "https:");
+}
