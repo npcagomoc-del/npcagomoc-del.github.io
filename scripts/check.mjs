@@ -39,3 +39,44 @@ assert(
 console.log(
   "Static checks passed: anchors, metadata, assets, credentials, and content escaping.",
 );
+const dangerous = structuredClone(data);
+dangerous.name = "</script><script>globalThis.injected=true</script>";
+const metadata = render(dangerous).metadata;
+const jsonText = metadata
+  .split('<script type="application/ld+json">')[1]
+  .split("</script>")[0];
+assert(
+  !jsonText.includes("<"),
+  "JSON-LD must not allow HTML script termination",
+);
+assert.equal(
+  JSON.parse(jsonText).name,
+  dangerous.name,
+  "JSON-LD must retain the name as data",
+);
+const changed = structuredClone(data);
+changed.name = "Test Person";
+changed.initials = "TP";
+changed.linkedin = "https://www.linkedin.com/in/test-person/";
+changed.github = "https://github.com/test-person";
+const changedSections = render(changed);
+const template = await readFile("src/template.html", "utf8");
+const changedPage = template.replace(
+  /\{\{(\w+)\}\}/g,
+  (_, key) => changedSections[key],
+);
+assert(
+  !changedPage.includes(data.name),
+  "Identity should come from central content",
+);
+assert(
+  changedPage.includes("linkedin.com/in/test-person"),
+  "Résumé contact labels should match URLs",
+);
+assert(
+  !changedSections.resume.includes("linkedin.com/in/npcagomoc"),
+  "Old résumé label must not remain",
+);
+console.log(
+  "Regression checks passed: JSON-LD injection boundary and central identity updates.",
+);

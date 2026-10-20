@@ -7,6 +7,9 @@ const evidence = "work/qa";
 await mkdir(evidence, { recursive: true });
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const results = [];
+// Composite captures keep navigation in document flow; live interactions still test the sticky header.
+const captureStyle =
+  ".site-header{position:static!important}.skip-link{visibility:hidden!important}";
 try {
   for (const width of [375, 768, 1280])
     for (const theme of ["dark", "light"]) {
@@ -43,6 +46,9 @@ try {
         Math.abs(photo.width - photo.height) < 1,
         "Portrait is not circular",
       );
+      await page.screenshot({
+        path: `${evidence}/${width}-${theme}-viewport.png`,
+      });
       for (const selector of [
         ".hero",
         "#work",
@@ -52,13 +58,13 @@ try {
         "#resume",
         "#contact",
       ]) {
-        await page
-          .locator(selector)
-          .screenshot({
-            path: `${evidence}/${width}-${theme}-${selector.replace(/[.#]/g, "")}.png`,
-          });
+        await page.locator(selector).screenshot({
+          style: captureStyle,
+          path: `${evidence}/${width}-${theme}-${selector.replace(/[.#]/g, "")}.png`,
+        });
       }
       await page.screenshot({
+        style: captureStyle,
         path: `${evidence}/${width}-${theme}-full.png`,
         fullPage: true,
       });
@@ -117,6 +123,7 @@ try {
         await details.locator("summary").click();
         assert((await details.getAttribute("open")) !== null);
         await details.screenshot({
+          style: captureStyle,
           path: `${evidence}/${width}-${theme}-details-${(await details.locator("summary").innerText()).startsWith("Further") ? "training" : (await details.locator("p").first().innerText()).slice(0, 15).replace(/\W/g, "")}.png`,
         });
         await details.locator("summary").click();

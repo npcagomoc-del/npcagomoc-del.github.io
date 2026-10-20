@@ -1,5 +1,15 @@
 import { escape, bullets } from "./html.mjs";
 import { icons } from "./graphics.mjs";
+const displayUrl = (value) => {
+  const url = new URL(value);
+  const host = url.hostname.startsWith("www.")
+    ? url.hostname.slice(4)
+    : url.hostname;
+  const path = url.pathname.endsWith("/")
+    ? url.pathname.slice(0, -1)
+    : url.pathname;
+  return escape(host + path);
+};
 export function renderResume(d) {
   const experience = d.experience
     .map(
@@ -26,7 +36,7 @@ export function renderResume(d) {
         `<li><strong>${escape(c.name)}</strong><br><span class="muted">${escape(c.issuer)}${c.issued ? ` · ${escape(c.issued)}` : ""}</span></li>`,
     )
     .join("");
-  return `<article class="resume-sheet" aria-label="Noe Cagomoc résumé"><header class="resume-top"><div><p class="eyebrow">PROFESSIONAL PROFILE</p><h3>${escape(d.name)}</h3><p>${escape(d.role)}</p></div><span class="resume-location">${escape(d.location)}</span></header><div class="resume-contacts"><a href="mailto:${escape(d.email)}">${escape(d.email)}</a><a href="${escape(d.linkedin)}">linkedin.com/in/npcagomoc</a><a href="${escape(d.github)}">github.com/npcagomoc-del</a></div><p class="resume-summary">${escape(d.summary)}</p><div class="resume-columns"><div><h4>Professional experience</h4>${experience}<h4>Selected projects</h4>${projects}</div><div><h4>Technical skills</h4>${skills}<h4>Certifications</h4><ul class="resume-cert-list">${certs}</ul><h4>Additional training</h4><p>${d.certifications
+  return `<article class="resume-sheet" aria-label="${escape(d.name)} résumé"><header class="resume-top"><div><p class="eyebrow">PROFESSIONAL PROFILE</p><h3>${escape(d.name)}</h3><p>${escape(d.role)}</p></div><span class="resume-location">${escape(d.location)}</span></header><div class="resume-contacts"><a href="mailto:${escape(d.email)}">${escape(d.email)}</a><a href="${escape(d.linkedin)}">${displayUrl(d.linkedin)}</a><a href="${escape(d.github)}">${displayUrl(d.github)}</a></div><p class="resume-summary">${escape(d.summary)}</p><div class="resume-columns"><div><h4>Professional experience</h4>${experience}<h4>Selected projects</h4>${projects}</div><div><h4>Technical skills</h4>${skills}<h4>Certifications</h4><ul class="resume-cert-list">${certs}</ul><h4>Additional training</h4><p>${d.certifications
     .filter((c) => !c.featured)
     .map((c) => escape(c.name))
     .join(

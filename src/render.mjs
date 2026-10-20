@@ -14,6 +14,12 @@ const credentialDates = (c) =>
 export function render(data) {
   const sections = {
     ...icons,
+    monogram: escape(data.initials.toLowerCase()),
+    year: escape(data.year),
+    credentialStrip: data.certifications
+      .filter((c) => c.featured)
+      .map((c) => `<span>${escape(c.short)}</span>`)
+      .join(""),
     headline: `${escape(data.headline[0])}<br><span class="hero-accent">${escape(data.headline[1])}</span>`,
     projects: `<div class="work-grid">${data.projects.map(projectCard).join("")}</div>`,
     skills: data.skills
@@ -61,7 +67,7 @@ export function render(data) {
 }
 function metadata(d) {
   const title = `${d.name} | Systems, Networks & Technology Operations`;
-  const description = `${d.name}: ICT Administration Supervisor and Database & Server Administrator. CCNA, AWS, Azure and ISC2 CC. Systems, networking, security and AI-assisted development.`;
+  const description = d.summary;
   const schema = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -71,5 +77,5 @@ function metadata(d) {
     sameAs: [d.linkedin, d.github],
     knowsAbout: d.skills.flatMap((s) => s.tools),
   };
-  return `<title>${escape(title)}</title><meta name="description" content="${escape(description)}"><link rel="canonical" href="${escape(d.siteUrl)}"><meta property="og:type" content="website"><meta property="og:title" content="${escape(title)}"><meta property="og:description" content="${escape(description)}"><meta property="og:url" content="${escape(d.siteUrl)}"><meta property="og:image" content="${escape(d.siteUrl)}assets/social-card.png"><meta property="og:image:alt" content="Noe Cagomoc — Systems, Networks and Technology Operations"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">${JSON.stringify(schema).replaceAll("<", "\u003c")}</script>`;
+  return `<title>${escape(title)}</title><meta name="description" content="${escape(description)}"><link rel="canonical" href="${escape(d.siteUrl)}"><meta property="og:type" content="website"><meta property="og:title" content="${escape(title)}"><meta property="og:description" content="${escape(description)}"><meta property="og:url" content="${escape(d.siteUrl)}"><meta property="og:image" content="${escape(d.siteUrl)}assets/social-card.png"><meta property="og:image:alt" content="${escape(d.name)} — ${escape(d.role)}"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">${JSON.stringify(schema).replaceAll("<", "\\u003c")}</script>`;
 }
