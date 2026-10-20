@@ -1,0 +1,211 @@
+{
+  "name": "Noe Cagomoc",
+  "initials": "NC",
+  "role": "ICT Administration Supervisor / Database & Server Admin",
+  "location": "Las Piñas, Philippines",
+  "availability": "Open to opportunities",
+  "siteUrl": "https://npcagomoc-del.github.io/",
+  "email": "npcagomoc@outlook.com",
+  "linkedin": "https://www.linkedin.com/in/npcagomoc/",
+  "github": "https://github.com/npcagomoc-del",
+  "headline": ["Reliable systems.", "Practical solutions."],
+  "intro": "ICT Administration Supervisor and Database & Server Administrator, with hands-on experience in networks, storage, security, and IT support. I also use AI coding tools to build practical applications.",
+  "summary": "ICT Administration Supervisor and Database & Server Administrator with experience in IT operations since 2021. Background in Level 1 and Level 2 technical support, server administration, network infrastructure, Synology storage, Microsoft 365, endpoint security, CCTV, and technical documentation. AWS, Azure, ISC2 CC, and CCNA credentials, with practical AI-assisted development using Codex, Claude, and OpenCode.",
+  "skills": [
+    {
+      "id": "01",
+      "title": "Systems & infrastructure",
+      "description": "Server administration, shared storage, backups, and container-based services.",
+      "tools": [
+        "Windows Server",
+        "Synology NAS",
+        "Docker",
+        "Server monitoring",
+        "Backup operations"
+      ]
+    },
+    {
+      "id": "02",
+      "title": "Networks & connectivity",
+      "description": "Network setup, troubleshooting, and infrastructure deployment across offices and remote sites.",
+      "tools": [
+        "UniFi",
+        "Cisco networking",
+        "LAN / WAN",
+        "Fiber optic connectivity",
+        "Network troubleshooting"
+      ]
+    },
+    {
+      "id": "03",
+      "title": "Security & workplace IT",
+      "description": "Endpoint protection, employee support, and physical security systems.",
+      "tools": [
+        "Cisco Secure Endpoint",
+        "Hikvision CCTV",
+        "Microsoft 365",
+        "IT asset management",
+        "Biometrics"
+      ]
+    },
+    {
+      "id": "04",
+      "title": "Agentic development",
+      "description": "Turning requirements into working tools with AI coding agents, then reviewing, testing, and iterating on the result.",
+      "tools": [
+        "OpenAI Codex",
+        "Claude",
+        "OpenCode",
+        "Git & GitHub",
+        "AI-assisted prototyping"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "title": "ICT Administration Supervisor / Database & Server Admin",
+      "company": "Leonio Group",
+      "period": "Feb 2025 — Present",
+      "location": "National Capital Region, Philippines",
+      "bullets": [
+        "Support database and server administration, infrastructure monitoring, and operational documentation.",
+        "Plan and coordinate network, CCTV, connectivity, and biometric deployments with ICT teams and vendors.",
+        "Support technical staff and help translate operational needs into practical infrastructure plans."
+      ]
+    },
+    {
+      "title": "IT Support Specialist",
+      "company": "Leonio Group",
+      "period": "Mar 2021 — Feb 2025",
+      "location": "Muntinlupa City, Philippines",
+      "bullets": [
+        "Provided Level 1 and Level 2 technical support to employees and remote sites.",
+        "Managed IT asset records, equipment deployment, software licenses, and backup monitoring.",
+        "Helped deliver network, server, CCTV, and biometric projects, and trained IT support associates."
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "short": "CCNA",
+      "name": "Cisco Certified Network Associate",
+      "issuer": "Cisco",
+      "type": "Certification",
+      "issued": "",
+      "expires": "",
+      "featured": true
+    },
+    {
+      "short": "AWS",
+      "name": "AWS Certified Solutions Architect – Associate",
+      "issuer": "Amazon Web Services",
+      "type": "Certification",
+      "issued": "Dec 2024",
+      "expires": "Dec 2027",
+      "featured": true
+    },
+    {
+      "short": "AZ-900",
+      "name": "Microsoft Certified: Azure Fundamentals",
+      "issuer": "Microsoft",
+      "type": "Certification",
+      "issued": "Sep 2024",
+      "expires": "",
+      "featured": true
+    },
+    {
+      "short": "ISC2 CC",
+      "name": "Certified in Cybersecurity (CC)",
+      "issuer": "ISC2",
+      "type": "Certification",
+      "issued": "Aug 2024",
+      "expires": "Aug 2027",
+      "featured": true
+    },
+    {
+      "short": "GOOGLE",
+      "name": "Google IT Support Specialization",
+      "issuer": "Google",
+      "type": "Professional learning",
+      "issued": "Mar 2024",
+      "expires": "",
+      "featured": false
+    },
+    {
+      "short": "CISCO",
+      "name": "Python Essentials 1",
+      "issuer": "Cisco",
+      "type": "Course completion",
+      "issued": "Oct 2024",
+      "expires": "",
+      "featured": false
+    },
+    {
+      "short": "SERVER",
+      "name": "Windows Server 2019 Administration",
+      "issuer": "Udemy",
+      "type": "Course completion",
+      "issued": "Sep 2024",
+      "expires": "",
+      "featured": false
+    },
+    {
+      "short": "LSS",
+      "name": "Lean Six Sigma White Belt Certification",
+      "issuer": "Six Sigma Online; Aveta Business Institute",
+      "type": "Professional learning",
+      "issued": "Jul 2022",
+      "expires": "",
+      "featured": false
+    }
+  ],
+  "education": {
+    "degree": "Bachelor of Science in Computer Engineering",
+    "school": "STI College",
+    "period": "Jun 2015 — Jun 2020"
+  },
+  "projects": [
+    {
+      "id": "infrastructure",
+      "category": "Infrastructure / Professional work",
+      "title": "Connecting the workplace.",
+      "description": "Network, connectivity, CCTV, and biometric deployments across head office, remote offices, industrial sites, and vessels.",
+      "scope": "Co-led head office and mine-site network upgrades; planned and deployed infrastructure at remote offices and vessels with the ICT team. Coordinated CCTV deployments, fiber connectivity, and a solar-powered biometric deployment with technical and civil works teams.",
+      "tools": [
+        "Network infrastructure",
+        "CCTV",
+        "Fiber connectivity",
+        "Vendor coordination"
+      ],
+      "link": "",
+      "linkLabel": "",
+      "note": "Scope summary. Diagram is illustrative; no internal network details are shown."
+    },
+    {
+      "id": "buseng",
+      "category": "Personal project / Game",
+      "title": "Buseng Chronicles",
+      "description": "A free Filipino meme-inspired game for Android and PC. A personal project that brings playful ideas into a working application.",
+      "scope": "Developed under NPC. The public repository contains the source and project documentation. See the repository for supported platforms and current releases.",
+      "tools": ["AI-assisted development", "Game development", "Android & PC"],
+      "link": "https://github.com/npcagomoc-del/buseng-chronicles",
+      "linkLabel": "Explore the project",
+      "note": "Personal project"
+    },
+    {
+      "id": "journal",
+      "category": "Personal project / Productivity",
+      "title": "Libre Trading Journal",
+      "description": "A free, local trading journal with optional AI providers and backup/restore. Adapted from an MIT-licensed open-source project.",
+      "scope": "Based on Trading-Journal-AI by Simon / Tape to Edge (MIT). The project focuses on local journaling, optional AI provider support, and backup and restore workflows.",
+      "tools": [
+        "Open-source adaptation",
+        "Local-first tools",
+        "Backup & restore"
+      ],
+      "link": "https://github.com/npcagomoc-del/libre-trading-journal",
+      "linkLabel": "View the repository",
+      "note": "Adapted from Trading-Journal-AI (MIT)"
+    }
+  ]
+}

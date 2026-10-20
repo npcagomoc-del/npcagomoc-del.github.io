@@ -1,0 +1,21 @@
+{
+  "name": "noe-cagomoc-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A fast, accessible portfolio for Noe Cagomoc, built for GitHub Pages.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs && node scripts/serve.mjs",
+    "preview": "node scripts/serve.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "node scripts/browser-test.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "playwright": "^1.64.1"
+  }
+}
