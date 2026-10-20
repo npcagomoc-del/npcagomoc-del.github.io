@@ -1,6 +1,6 @@
 # Portfolio maintenance instructions
 
-Read README.md, DESIGN.md, docs/MAINTENANCE.md and docs/CONTENT-SOURCES.md before changes.
+Read HANDOFF.md, README.md, DESIGN.md, docs/MAINTENANCE.md and docs/CONTENT-SOURCES.md before changes.
 
 - Static HTML/CSS/JavaScript with Node build scripts. Keep the site compatible with GitHub Pages and repository subpaths.
 - Edit `src/content.json` for personal facts; both the main page and résumé render from it. Do not hand-edit dist/.

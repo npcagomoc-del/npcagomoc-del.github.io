@@ -4,6 +4,8 @@ A personal portfolio for systems administration, network support, and technology
 
 **Website:** https://npcagomoc-del.github.io/
 
+For continuity and future revisions, start with [HANDOFF.md](HANDOFF.md).
+
 ## Run locally
 
 Requires Node.js 22 or newer. There are no production dependencies or external services.
